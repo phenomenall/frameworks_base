@@ -268,4 +268,9 @@
     <string name="keyguard_indication_fast_charging_time">Fast Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
     <string name="keyguard_plugged_in_fast_charging">Fast Charging</string>
 
+    <!-- Music tile -->
+    <string name="quick_settings_music_label">Music</string>
+    <string name="quick_settings_music_play">Play</string>
+    <string name="quick_settings_music_pause">Pause</string> 
+    
 </resources>
