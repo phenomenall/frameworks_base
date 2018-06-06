@@ -78,4 +78,8 @@
     <!-- Two target preference vertical divider color -->
     <color name="list_divider_dark">#64000000</color>
 
+		<!-- Spidey clock -->
+    <color name="spidey_clock_hour_hand_color">#0288D1</color>
+    <color name="spidey_clock_minute_hand_color">#0288D1</color>
+
 </resources>
