@@ -472,7 +472,7 @@ public class KeyguardStatusView extends GridLayout implements
                 mDeadPoolClockView.setVisibility(View.GONE);
                 mSpideyClockView.setVisibility(View.GONE);
                 break;
-            case 6: //analog (spidey)
+            case 7: //analog (spidey)
                 mSpideyClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE : View.GONE) : View.VISIBLE);
                 mAnalogClockView.setVisibility(View.GONE);
                 mClockView.setVisibility(View.GONE);
@@ -604,7 +604,7 @@ public class KeyguardStatusView extends GridLayout implements
                 mDeadPoolClockView.unregisterReceiver();
                 mSpideyClockView.unregisterReceiver();
                 break;
-            case 6: //analog (spidey)
+            case 7: //analog (spidey)
                 params.addRule(RelativeLayout.BELOW, R.id.spidey_clock_view);
                 mAnalogClockView.unregisterReceiver();
                 mSpideyClockView.registerReceiver();
