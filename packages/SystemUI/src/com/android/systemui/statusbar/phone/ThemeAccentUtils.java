@@ -45,13 +45,8 @@ public class ThemeAccentUtils {
         "com.accents.brown", // 17
         "com.accents.grey", // 18
         "com.accents.bluegrey", // 19
-        "com.accents.candyred", //20
-        "com.accents.palered", //21
-        "com.accents.extendedgreen", //22
-        "com.accents.paleblue", //23
-        "com.accents.jadegreen", //24
-        "com.accents.black", // 25
-        "com.accents.white", // 26
+        "com.accents.black", // 20
+        "com.accents.white", // 21
     };
 
     private static final String[] DARK_THEMES = {
@@ -72,7 +67,7 @@ public class ThemeAccentUtils {
         "com.android.system.theme.extended", // 0
         "com.android.settings.theme.extended", // 1
         "com.android.dui.theme.extended", // 2
-        "com.accents.extendedgreen", //3
+        "com.android.gboard.theme.extended", // 3
     };
 
     private static final String STOCK_DARK_THEME = "com.android.systemui.theme.dark";
@@ -80,32 +75,22 @@ public class ThemeAccentUtils {
     // Switches theme accent from to another or back to stock
     public static void updateAccents(IOverlayManager om, int userId, int accentSetting) {
         if (accentSetting == 0) {
-            //On selecting default accent, set accent to extended green if ExtendedUI is being used
-            if(isUsingExtendedTheme(om, userId)) {
-            try {
-                om.setEnabled(EXTENDED_THEMES[3],
-                        true, userId);
-            } catch (RemoteException e) {
-                Log.w(TAG, "Can't change theme", e);
-            }
-            } else {
             unloadAccents(om, userId);
-            }
-        } else if (accentSetting < 25) {
+        } else if (accentSetting < 20) {
             try {
                 om.setEnabled(ACCENTS[accentSetting],
                         true, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
-        } else if (accentSetting == 25) {
+        } else if (accentSetting == 20) {
             try {
                 // If using a dark, black or extendedUI theme we use the white accent, otherwise use the black accent
                 if (isUsingDarkTheme(om, userId) || isUsingBlackTheme(om, userId) || isUsingExtendedTheme(om, userId)) {
-                    om.setEnabled(ACCENTS[26],
+                    om.setEnabled(ACCENTS[21],
                             true, userId);
                 } else {
-                    om.setEnabled(ACCENTS[25],
+                    om.setEnabled(ACCENTS[20],
                             true, userId);
                 }
             } catch (RemoteException e) {
@@ -208,21 +193,21 @@ public class ThemeAccentUtils {
         OverlayInfo themeInfo = null;
         try {
             if (isUsingDarkTheme(om, userId) || isUsingBlackTheme(om, userId) || isUsingExtendedTheme(om, userId)) {
-                themeInfo = om.getOverlayInfo(ACCENTS[25],
+                themeInfo = om.getOverlayInfo(ACCENTS[20],
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
-                    om.setEnabled(ACCENTS[25],
+                    om.setEnabled(ACCENTS[20],
                             false /*disable*/, userId);
-                    om.setEnabled(ACCENTS[26],
+                    om.setEnabled(ACCENTS[21],
                             true, userId);
                 }
             } else {
-                themeInfo = om.getOverlayInfo(ACCENTS[26],
+                themeInfo = om.getOverlayInfo(ACCENTS[21],
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
-                    om.setEnabled(ACCENTS[26],
+                    om.setEnabled(ACCENTS[21],
                             false /*disable*/, userId);
-                    om.setEnabled(ACCENTS[25],
+                    om.setEnabled(ACCENTS[20],
                             true, userId);
                 }
             }
